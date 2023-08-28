@@ -30,3 +30,8 @@ Route::controller(AuthController::class)->group(function () {
 Route::resource('data', BlogDataController::class)->except('show', 'edit');
 Route::resource('blogType', BlogTypeController::class)->except('show', 'edit');
 
+
+Route::post('blog/{blogId}/like', [BlogDataController::class, 'addLike'])->middleware('auth:api');
+Route::post('blog/{blogId}/dislike', [BlogDataController::class, 'addDislike'])->middleware('auth:api');
+Route::post('blog/{blogId}/comment', [BlogDataController::class, 'addComment'])->middleware('auth:api');
+
